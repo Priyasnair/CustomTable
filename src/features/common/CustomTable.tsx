@@ -1,23 +1,23 @@
-import { TableConfig } from "../../App";
+import { TableConfig } from "../../Models/TableModel";
 
-function CustomTable({data}:{data:TableConfig<T>}){
+function CustomTable({data}:{data:TableConfig}){
     return(
         <>
             <table>
                 <tbody>
                 <tr>
-                    {data.tableHeaderData.map((item:any)=>
-                        <th>{item}</th>
+                    {data.tableHeaderConfig.data.map((item:any)=>
+                        <th style={data.tableHeaderConfig.style}>
+                            {item}
+                        </th>
                     )
                     }
                 </tr>
-                {data.tableData.map((item:any)=>
+                {data.tableDataConfig.data.map((item:any)=>
                     <tr>{
                         item.map((i:any)=>
-                            <td>{i}</td>
-                        )
-                        }</tr>
-                )
+                            <td style={data.tableDataConfig.style}>{i}</td>
+                        )}</tr>)
                     }
                     </tbody>
             </table>
